@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{'nav-desktop--fixed': menu.positionTop}">
 
     <div class="header-head">
       <h1 class="header-head-title">Query Technique</h1>
