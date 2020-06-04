@@ -7,15 +7,13 @@ export default (server) => {
     if (isNaN(id)) {
       console.error('[ROUTE ERROR]: The parametre is not a number');
       response.status(400).send('Bad request');
-    } 
+    }
     else next();
   })
 
   server.get(`/article`, ArticleController.getAll);
 
-  server.get(`/article/:id`, (request, response) => {
-    response.status(200).send(`Display the article with id ${request.params.id}`);
-  });
+  server.get(`/article/:id`, ArticleController.getOne);
 
   server.post(`/article`, (request, response) => {
     response.status(201).send('The article was created');
