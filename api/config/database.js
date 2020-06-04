@@ -1,7 +1,4 @@
 import mysql from 'mysql';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 class Database {
   constructor() {
@@ -22,14 +19,14 @@ class Database {
   }
   query(sql, args) {
     return new Promise((resolve, reject) => {
-      this.connection.query( sql, args, (error, rows) => {
+      this.connection.query(sql, args, (error, rows) => {
         if (error) return reject(error);
         resolve(rows);
       });
     });
   }
   close() {
-    return new Promise( (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this.connection.end(error => {
         if (error) return reject(error);
         resolve();
