@@ -1,14 +1,14 @@
 <template>
   <main class="main">
     <div class="posts">
-      <Post 
+      <Article 
         :key="index"
-        v-for="(post, index) in posts"
-        :slug="post.slug"
-        :title="post.title"
-        :date="post.date"
-        :shortContent="post.shortContent"
-        :lastPost="index === (postsNumber - 1)"
+        v-for="(article, index) in articles"
+        :slug="article.slug"
+        :title="article.title"
+        :date="article.date"
+        :shortContent="article.shortContent"
+        :lastArticle="index === (articlesNumber - 1)"
       />
     </div>
   </main>
@@ -16,16 +16,16 @@
 
 <script>
 
-import Post from '../Post/Post';
+import Article from '../Article/Article';
 
 export default {
   name: 'Home',
   components: {
-    Post,
+    Article,
   },
   data() {
     return {
-      posts: [
+      articles: [
         {
           id: 0,
           slug: "les-erreurs-cors-cross-origin-resource-sharing--0",
@@ -55,7 +55,7 @@ export default {
           shortContent: "Vivamus faucibus quam lacinia est dictum, nec tincidunt urna consectetur. Praesent semper nunc aliquet justo dignissim, eu placerat ipsum cursus. Sed consequat commodo dui sit amet auctor. Suspendisse tincidunt, turpis eget consectetur congue, risus lectus bibendum nunc, at ullamcorper ligula enim ac...",
         },
       ],
-      postsNumber: 4,
+      articlesNumber: 4,
     };
   },
 }

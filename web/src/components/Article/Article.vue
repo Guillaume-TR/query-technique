@@ -1,25 +1,25 @@
 <template>
-  <div class="post">
-    <h3 class="post-title">
+  <div class="article">
+    <h3 class="article-title">
       {{ title }}
     </h3>
-    <div class="post-date">
-      <img class="post-date-icon" src="../../assets/images/calendar.svg" alt="calendar">
-      <span class="post-date-text">{{ date }}</span>
+    <div class="article-date">
+      <img class="article-date-icon" src="../../assets/images/calendar.svg" alt="calendar">
+      <span class="article-date-text">{{ date }}</span>
     </div>
-    <p class="post-short-description">
+    <p class="article-short-description">
       {{ shortContent }}
     </p>
-    <a class="post-read-more" :href="`post/${slug}`">
+    <a class="article-read-more" :href="`article/${slug}`">
       Lire l'article
     </a>
-    <hr class="post-separator" v-if="!lastPost">
+    <hr class="article-separator" v-if="!lastArticle">
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Post',
+  name: 'Article',
   props: {
     slug: {
       type: String,
@@ -37,7 +37,7 @@ export default {
       type: String,
       required: true,
     },
-    lastPost: {
+    lastArticle: {
       type: Boolean,
       required: true,
     },
@@ -45,4 +45,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./post.scss"></style>
+<style lang="scss" src="./article.scss"></style>

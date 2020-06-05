@@ -1,21 +1,21 @@
 <template>
   <main class="main">
-    <div class="post-details">
-      <h3 class="post-details-title">
+    <div class="article-details">
+      <h3 class="article-details-title">
         {{ title }}
       </h3>
-    <div class="post-details-date">
-      <img class="post-details-date-icon" src="../../assets/images/calendar.svg" alt="calendar">
-      <span class="post-details-date-text">{{ date }}</span>
+    <div class="article-details-date">
+      <img class="article-details-date-icon" src="../../assets/images/calendar.svg" alt="calendar">
+      <span class="article-details-date-text">{{ date }}</span>
     </div>
-    <p class="post-details-content" v-html="content"></p>
+    <p class="article-details-content" v-html="content"></p>
     </div>
   </main>
 </template>
 
 <script>
 export default {
-  name: 'PostDetails',
+  name: 'ArticleDetails',
   data() {
     return {
       title: "Les erreurs CORS, Cross-origin resource sharing",
@@ -26,4 +26,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./postDetails.scss"></style>
+<style lang="scss" src="./articleDetails.scss"></style>

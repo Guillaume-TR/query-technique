@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <PostDetails />
+    <router-view></router-view>
     <footer class="footer">
       <div class="footer-name">Guillaume Terrien</div>
       <div class="footer-version">1.0.0</div>
@@ -12,15 +12,11 @@
 <script>
 
 import Header from './components/Header/Header';
-// import Home from './components/Home/Home';
-import PostDetails from './components/PostDetails/PostDetails';
 
 export default {
   name: 'App',
   components: {
     Header,
-    // Home,
-    PostDetails
   }
 }
 </script>
