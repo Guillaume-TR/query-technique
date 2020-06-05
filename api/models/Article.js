@@ -47,13 +47,26 @@ class Article {
         [title, content, shortContent, articleId],
       );
 
-      const { data } = await this.findbyId(articleId);
+    const { data } = await this.findbyId(articleId);
 
-      return {
-        error: null,
-        modified: articleUpdated.changedRows === 1,
-        data,
-      };
+    return {
+      error: null,
+      modified: articleUpdated.changedRows === 1,
+      data,
+    };
+  }
+
+  async delete(articleId) {
+    const articleDeleted = await Database
+      .query(
+        'DELETE FROM article WHERE id = ?',
+        [articleId],
+      );
+
+    return {
+      error: null,
+      deleted: articleDeleted.affectedRows === 1,
+    };
   }
 }
 

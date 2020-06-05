@@ -19,7 +19,5 @@ export default (server) => {
 
   server.put(`/article/:id`,ArticleController.modify);
 
-  server.delete(`/article/:id`, (request, response) => {
-    response.status(response.statusCode).send(`The article with id ${request.params.id} was deleted`);
-  });
+  server.delete(`/article/:id`, ArticleController.remove);
 }
