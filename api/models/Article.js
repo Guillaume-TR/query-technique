@@ -7,10 +7,22 @@ class Article {
 
     const articlesFound = await Database.query(sql);
 
+    const articles = articlesFound.map((article) => {
+
+      return {
+        id: article.id,
+        slug: article.slug,
+        title: article.title,
+        content: article.content,
+        shortContent: article.short_content,
+        date: article.created_at
+      }
+    })
+    
     return {
       error: null,
-      count: articlesFound.length,
-      data : articlesFound,
+      articlesNumber: articlesFound.length,
+      articles,
     }
   }
 
@@ -19,16 +31,19 @@ class Article {
     const values = [articleId];
 
     const articleFound = await Database.query(sql, values);
-    
+
     return {
       error: null,
-      data : articleFound,
+      article : { 
+        id: articleFound[0]?.id,
+        date: articleFound[0]?.created_at
+      },
     }
   }
 
-  async create(title, content, shortContent) {
-    const sql    = 'INSERT INTO article(title, content, short_content) VALUE(?, ?, ?)';
-    const values = [title, content, shortContent];
+  async create(title, slug, content, shortContent) {
+    const sql    = 'INSERT INTO article(title, slug, content, short_content) VALUE(?, ?, ?, ?)';
+    const values = [title, slug, content, shortContent];
 
     const articleCreated = await Database.query(sql, values);
 
@@ -38,20 +53,20 @@ class Article {
     }
   }
 
-  async update(articleId, title, content, shortContent) {
-    const sql    = 'UPDATE article SET title = ?, content = ?, short_content = ? WHERE id = ?';
-    const values = [title, content, shortContent, articleId];
+  async update(articleId, title, slug, content, shortContent) {
+    const sql    = 'UPDATE article SET title = ?, slug = ?, content = ?, short_content = ? WHERE id = ?';
+    const values = [title, slug, content, shortContent, articleId];
 
     const articleUpdated = await Database.query(sql, values);
     
     if (articleUpdated.changedRows === 1) {
 
-      const { data } = await this.findbyId(articleId);
+      const { article } = await this.findbyId(articleId);
 
       return {
         error   : null,
         modified: articleUpdated.changedRows === 1,
-        data
+        article
       };
     }
     return {
