@@ -39,6 +39,22 @@ class Article {
       newId: data.insertId,
     }
   }
+
+  async update(articleId, title, content, shortContent) {
+    const articleUpdated = await Database
+      .query(
+        'UPDATE article SET title = ?, content = ?, short_content = ? WHERE id = ?',
+        [title, content, shortContent, articleId],
+      );
+
+      const { data } = await this.findbyId(articleId);
+
+      return {
+        error: null,
+        modified: articleUpdated.changedRows === 1,
+        data,
+      };
+  }
 }
 
 export default new Article();

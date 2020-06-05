@@ -45,6 +45,35 @@ class ArticleController {
       response.status(500).send("Internal server error");
     }
   }
+
+  async modify(request, response) {
+    try {
+      const {
+        body: {
+          title,
+          content,
+          shortContent,
+        },
+        params: {
+          id: articleId,
+        }
+      } = request;
+
+      const { data: articleFetch } = await Article.findbyId(articleId);
+      
+      if (articleFetch.length === 1) {
+        
+        if (title && content && shortContent) {
+          response.status(201).send(await Article.update(articleId, title, content, shortContent));
+        }
+        else response.status(400).send("Bad request");
+      }
+      else response.status(404).send("Article not found");
+    }
+    catch { 
+      response.status(500).send("Internal server error");
+    }
+  }
 }
 
 export default new ArticleController();

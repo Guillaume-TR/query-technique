@@ -17,9 +17,7 @@ export default (server) => {
 
   server.post(`/article`, ArticleController.add);
 
-  server.put(`/article/:id`, (request, response) => {
-    response.status(response.statusCode).send(`The article with id ${request.params.id} was modified`);
-  });
+  server.put(`/article/:id`,ArticleController.modify);
 
   server.delete(`/article/:id`, (request, response) => {
     response.status(response.statusCode).send(`The article with id ${request.params.id} was deleted`);
