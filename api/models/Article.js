@@ -3,69 +3,72 @@ import Database from '../config/database';
 class Article {
 
   async findAll() {
-    const data = await Database
-      .query(
-        'SELECT * FROM article'
-      );
+    const sql = 'SELECT * FROM article';
+
+    const articlesFound = await Database.query(sql);
 
     return {
       error: null,
-      count: data.length,
-      data,
+      count: articlesFound.length,
+      data : articlesFound,
     }
   }
 
   async findbyId(articleId) {
-    const data = await Database
-      .query(
-        'SELECT * FROM article WHERE id = ?',
-        [articleId],
-      );
+    const sql    = 'SELECT * FROM article WHERE id = ?';
+    const values = [articleId];
 
+    const articleFound = await Database.query(sql, values);
+    
     return {
       error: null,
-      data,
+      data : articleFound,
     }
   }
 
   async create(title, content, shortContent) {
-    const data = await Database
-      .query(
-        'INSERT INTO article(title, content, short_content) VALUE(?, ?, ?)',
-        [title, content, shortContent],
-      );
+    const sql    = 'INSERT INTO article(title, content, short_content) VALUE(?, ?, ?)';
+    const values = [title, content, shortContent];
+
+    const articleCreated = await Database.query(sql, values);
+
     return {
       error: null,
-      newId: data.insertId,
+      newId: articleCreated.insertId
     }
   }
 
   async update(articleId, title, content, shortContent) {
-    const articleUpdated = await Database
-      .query(
-        'UPDATE article SET title = ?, content = ?, short_content = ? WHERE id = ?',
-        [title, content, shortContent, articleId],
-      );
+    const sql    = 'UPDATE article SET title = ?, content = ?, short_content = ? WHERE id = ?';
+    const values = [title, content, shortContent, articleId];
 
-    const { data } = await this.findbyId(articleId);
+    const articleUpdated = await Database.query(sql, values);
+    
+    if (articleUpdated.changedRows === 1) {
 
+      const { data } = await this.findbyId(articleId);
+
+      return {
+        error   : null,
+        modified: articleUpdated.changedRows === 1,
+        data
+      };
+    }
     return {
-      error: null,
-      modified: articleUpdated.changedRows === 1,
-      data,
+      error   : null,
+      modified: articleUpdated.changedRows === 1
     };
   }
 
   async delete(articleId) {
-    const articleDeleted = await Database
-      .query(
-        'DELETE FROM article WHERE id = ?',
-        [articleId],
-      );
+    const sql    = 'DELETE FROM article WHERE id = ?';
+    const values = [articleId];
+
+    const articleDeleted = await Database.query(sql, values);
 
     return {
-      error: null,
-      deleted: articleDeleted.affectedRows === 1,
+      error  : null,
+      deleted: articleDeleted.affectedRows === 1
     };
   }
 }
