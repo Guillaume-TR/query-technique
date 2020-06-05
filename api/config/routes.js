@@ -15,9 +15,7 @@ export default (server) => {
 
   server.get(`/article/:id`, ArticleController.getOne);
 
-  server.post(`/article`, (request, response) => {
-    response.status(201).send('The article was created');
-  });
+  server.post(`/article`, ArticleController.add);
 
   server.put(`/article/:id`, (request, response) => {
     response.status(response.statusCode).send(`The article with id ${request.params.id} was modified`);
