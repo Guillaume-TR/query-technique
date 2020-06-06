@@ -1,9 +1,10 @@
 import Database from '../config/database';
+import { dateFormat } from '../utils/functions';
 
 class Article {
 
   async findAll() {
-    const sql = 'SELECT * FROM article';
+    const sql = 'SELECT * FROM article ORDER BY created_at DESC';
 
     const articlesFound = await Database.query(sql);
 
@@ -15,10 +16,10 @@ class Article {
         title: article.title,
         content: article.content,
         shortContent: article.short_content,
-        date: article.created_at
+        date: dateFormat(article.created_at)
       }
     })
-    
+
     return {
       error: null,
       articlesNumber: articlesFound.length,
@@ -36,7 +37,10 @@ class Article {
       error: null,
       article : { 
         id: articleFound[0]?.id,
-        date: articleFound[0]?.created_at
+        slug: articleFound[0]?.slug,
+        title: articleFound[0]?.title,
+        content: articleFound[0]?.content,
+        date: dateFormat(articleFound[0]?.created_at)
       },
     }
   }
