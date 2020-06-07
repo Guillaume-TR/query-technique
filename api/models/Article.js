@@ -45,6 +45,24 @@ class Article {
     }
   }
 
+  async findbySlug(articleSlug) {
+    const sql    = 'SELECT * FROM article WHERE slug = ?';
+    const values = [articleSlug];
+
+    const articleFound = await Database.query(sql, values);
+
+    return {
+      error: null,
+      article : { 
+        id: articleFound[0]?.id,
+        slug: articleFound[0]?.slug,
+        title: articleFound[0]?.title,
+        content: articleFound[0]?.content,
+        date: dateFormat(articleFound[0]?.created_at)
+      },
+    }
+  }
+
   async create(title, slug, content, shortContent) {
     const sql    = 'INSERT INTO article(title, slug, content, short_content) VALUE(?, ?, ?, ?)';
     const values = [title, slug, content, shortContent];

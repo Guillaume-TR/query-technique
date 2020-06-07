@@ -18,9 +18,9 @@ class ArticleController {
   async getOne(request, response) {
     try
     {
-      const { id: articleId } = request.params;
+      const { slug: articleSlug } = request.params;
       
-      response.status(200).send(await Article.findbyId(articleId));
+      response.status(200).send(await Article.findbySlug(articleSlug));
     }
     catch
     {
@@ -38,10 +38,16 @@ class ArticleController {
       content = content.trim();
       shortContent = shortContent.trim();
 
-      if (title && content && shortContent) {
-        response.status(201).send(await Article.create(title, slug, content, shortContent));
+      const { article: articleFetch } = await Article.findbySlug(slug);
+
+      if (articleFetch.slug !== slug) {
+        if (title && content && shortContent) {
+          response.status(201).send(await Article.create(title, slug, content, shortContent));
+        }
+        else response.status(400).send("Bad request");
       }
-      else response.status(400).send("Bad request");
+      else response.status(400).send("Bad request, article already exist");
+
     }
     catch
     {

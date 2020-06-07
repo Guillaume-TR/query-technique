@@ -13,7 +13,7 @@ export default (server) => {
 
   server.get(`/article`, ArticleController.getAll);
 
-  server.get(`/article/:id`, ArticleController.getOne);
+  server.get(`/article/:slug`, ArticleController.getOne);
 
   server.post(`/article`, ArticleController.add);
 
