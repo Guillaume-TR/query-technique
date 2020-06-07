@@ -18,6 +18,8 @@
 
 import Article from '../Article/Article';
 
+import axios from 'axios';
+
 export default {
   name: 'Home',
   components: {
@@ -25,39 +27,20 @@ export default {
   },
   data() {
     return {
-      articles: [
-        {
-          id: 0,
-          slug: "les-erreurs-cors-cross-origin-resource-sharing--0",
-          title: "Les erreurs CORS, Cross-origin resource sharing",
-          date: "20 Décembre 2020",
-          shortContent: "Suspendisse semper augue faucibus, consectetur dolor et, ultrices dui. Suspendisse maximus ipsum ac nunc sodales, in blandit lacus efficitur. Donec non laoreet justo. Nam nec lacinia nulla. Vestibulum tellus mauris, aliquam in dapibus ut, varius in odio. Praesent nec dignissim diam...",
-        },
-        {
-          id: 1,
-          slug: "les-faille-csrf-cross-site-request-forgery--1",
-          title: "Les faille CSRF, Cross-site request forgery",
-          date: "02 Octobre 2020",
-          shortContent: "Vivamus faucibus quam lacinia est dictum, nec tincidunt urna consectetur. Praesent semper nunc aliquet justo dignissim, eu placerat ipsum cursus. Sed consequat commodo dui sit amet auctor. Suspendisse tincidunt, turpis eget consectetur congue, risus lectus bibendum nunc, at ullamcorper ligula enim ac...",
-        },
-        {
-          id: 2,
-          slug: "les-erreurs-cors-cross-origin-resource-sharing--2",
-          title: "Les erreurs CORS, Cross-origin resource sharing",
-          date: "20 Décembre 2020",
-          shortContent: "Suspendisse semper augue faucibus, consectetur dolor et, ultrices dui. Suspendisse maximus ipsum ac nunc sodales, in blandit lacus efficitur. Donec non laoreet justo. Nam nec lacinia nulla. Vestibulum tellus mauris, aliquam in dapibus ut, varius in odio. Praesent nec dignissim diam...",
-        },
-        {
-          id: 3,
-          slug: "les-faille-csrf-cross-site-request-forgery--3",
-          title: "Les faille CSRF, Cross-site request forgery",
-          date: "02 Octobre 2020",
-          shortContent: "Vivamus faucibus quam lacinia est dictum, nec tincidunt urna consectetur. Praesent semper nunc aliquet justo dignissim, eu placerat ipsum cursus. Sed consequat commodo dui sit amet auctor. Suspendisse tincidunt, turpis eget consectetur congue, risus lectus bibendum nunc, at ullamcorper ligula enim ac...",
-        },
-      ],
-      articlesNumber: 4,
+      articles: [],
+      articlesNumber: 0
     };
   },
+  mounted() {
+    axios.get('http://localhost:5000/article')
+      .then(response => {
+        this.articles  = response.data.articles;
+        this.articlesNumber = response.data.articlesNumber;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
 }
 </script>
 

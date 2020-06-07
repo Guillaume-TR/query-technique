@@ -2,14 +2,16 @@
   <header class="header" :class="{'nav-desktop--fixed': menu.positionTop}">
 
     <div class="header-head">
-      <h1 class="header-head-title">Query Technique</h1>
+      <h1 class="header-head-title">
+        <router-link :to="{ name: 'home' }">Query Technique</router-link>
+      </h1>
       <h2 class="header-head-catchphrase">Phrase d'accroche en reflexion</h2>
     </div>
 
     <nav class="header-nav" :class="{'nav--top': menu.positionTop}">
 
       <h1 class="header-nav-title" :class="{'hidden': menu.hiddenTitle}">
-        Query Technique
+        <router-link :to="{ name: 'home' }">Query Technique</router-link>
       </h1>
 
       <ul class="header-nav-items" :class="{'active': menu.display}">

@@ -10,9 +10,14 @@
     <p class="article-short-description">
       {{ shortContent }}
     </p>
-    <a class="article-read-more" :href="`article/${slug}`">
+    <router-link class="article-read-more" :to="{
+      name: 'articleDetails',
+      params: {
+        slug
+      }
+    }">
       Lire l'article
-    </a>
+    </router-link>
     <hr class="article-separator" v-if="!lastArticle">
   </div>
 </template>
