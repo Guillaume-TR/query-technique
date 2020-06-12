@@ -5,8 +5,15 @@
 .main {
   padding: 2rem 10%;
 
-  .posts {
+  .articles {
     display: flex;
     flex-direction: column;
+
+    &-not-found {
+      text-align: center;
+      margin: 5rem;
+      font-size: 1.8em;
+      color: $c-primary;
+    }
   }
 }

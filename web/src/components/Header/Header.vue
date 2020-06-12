@@ -16,19 +16,7 @@
 
       <ul class="header-nav-items" :class="{'active': menu.display}">
         <li class="header-nav-items-item">
-          <a class="item-link" href="#">Link</a>
-        </li>
-        <li class="header-nav-items-item">
-          <a class="item-link" href="#">Link</a>
-        </li>
-        <li class="header-nav-items-item">
-          <a class="item-link" href="#">Link</a>
-        </li>
-        <li class="header-nav-items-item">
-          <a class="item-link" href="#">Link</a>
-        </li>
-        <li class="header-nav-items-item">
-          <a class="item-link" href="#">Link</a>
+          <a class="item-link" href="#">À propos</a>
         </li>
       </ul>
 

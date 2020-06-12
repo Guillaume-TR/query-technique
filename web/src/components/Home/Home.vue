@@ -1,6 +1,6 @@
 <template>
   <main class="main">
-    <div class="posts">
+    <div class="articles">
       <Article 
         :key="index"
         v-for="(article, index) in articles"
@@ -10,6 +10,9 @@
         :shortContent="article.shortContent"
         :lastArticle="index === (articlesNumber - 1)"
       />
+    </div>
+    <div class="articles-not-found" v-if="articlesNumber < 1">
+      Aucun article trouvé ...
     </div>
   </main>
 </template>
