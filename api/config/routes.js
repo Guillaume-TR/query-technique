@@ -1,4 +1,6 @@
 import ArticleController from '../controllers/ArticleController';
+import UserController from '../controllers/UserController';
+import { authCheck } from '../middlewares/AuthMiddleware';
 
 export default (server) => {
   server.param('id', (request, response, next, id) => {
@@ -15,9 +17,11 @@ export default (server) => {
 
   server.get(`/article/:slug`, ArticleController.getOne);
 
-  server.post(`/article`, ArticleController.add);
+  server.post(`/article`, authCheck, ArticleController.add);
 
-  server.put(`/article/:id`,ArticleController.modify);
+  server.put(`/article/:id`, authCheck, ArticleController.modify);
+  
+  server.delete(`/article/:id`, authCheck, ArticleController.remove);
 
-  server.delete(`/article/:id`, ArticleController.remove);
+  server.post('/connection', UserController.connection);
 }
