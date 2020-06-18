@@ -1,11 +1,10 @@
 
-@import '../../assets/styles/variables.scss';
-
+@import 'src/assets/styles/variables.scss';
 
 .main {
   padding: 2rem 10%;
 
-  .post-details {
+  .article-details {
     margin: 3rem 0 2rem;
 
     &-title {

@@ -1,4 +1,6 @@
 import ArticleController from '../controllers/ArticleController';
+import UserController from '../controllers/UserController';
+import { authCheck } from '../middlewares/AuthMiddleware';
 
 export default (server) => {
   server.param('id', (request, response, next, id) => {
@@ -7,25 +9,19 @@ export default (server) => {
     if (isNaN(id)) {
       console.error('[ROUTE ERROR]: The parametre is not a number');
       response.status(400).send('Bad request');
-    } 
+    }
     else next();
   })
 
   server.get(`/article`, ArticleController.getAll);
 
-  server.get(`/article/:id`, (request, response) => {
-    response.status(200).send(`Display the article with id ${request.params.id}`);
-  });
+  server.get(`/article/:slug`, ArticleController.getOne);
 
-  server.post(`/article`, (request, response) => {
-    response.status(201).send('The article was created');
-  });
+  server.post(`/article`, authCheck, ArticleController.add);
 
-  server.put(`/article/:id`, (request, response) => {
-    response.status(response.statusCode).send(`The article with id ${request.params.id} was modified`);
-  });
+  server.put(`/article/:id`, authCheck, ArticleController.modify);
+  
+  server.delete(`/article/:id`, authCheck, ArticleController.remove);
 
-  server.delete(`/article/:id`, (request, response) => {
-    response.status(response.statusCode).send(`The article with id ${request.params.id} was deleted`);
-  });
+  server.post('/connection', UserController.connection);
 }

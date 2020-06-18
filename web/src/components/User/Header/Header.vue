@@ -2,31 +2,21 @@
   <header class="header" :class="{'nav-desktop--fixed': menu.positionTop}">
 
     <div class="header-head">
-      <h1 class="header-head-title">Query Technique</h1>
+      <h1 class="header-head-title">
+        <router-link :to="{ name: 'user-home' }">Query Technique</router-link>
+      </h1>
       <h2 class="header-head-catchphrase">Phrase d'accroche en reflexion</h2>
     </div>
 
     <nav class="header-nav" :class="{'nav--top': menu.positionTop}">
 
       <h1 class="header-nav-title" :class="{'hidden': menu.hiddenTitle}">
-        Query Technique
+        <router-link :to="{ name: 'user-home' }">Query Technique</router-link>
       </h1>
 
       <ul class="header-nav-items" :class="{'active': menu.display}">
         <li class="header-nav-items-item">
-          <a class="item-link" href="#">Link</a>
-        </li>
-        <li class="header-nav-items-item">
-          <a class="item-link" href="#">Link</a>
-        </li>
-        <li class="header-nav-items-item">
-          <a class="item-link" href="#">Link</a>
-        </li>
-        <li class="header-nav-items-item">
-          <a class="item-link" href="#">Link</a>
-        </li>
-        <li class="header-nav-items-item">
-          <a class="item-link" href="#">Link</a>
+          <a class="item-link" href="#">À propos</a>
         </li>
       </ul>
 

@@ -1,0 +1,92 @@
+@import 'src/assets/styles/variables.scss';
+
+.main {
+  margin-top: 70px;
+
+  .section-title {
+    padding: 1.5rem 1rem 2.5rem;
+    font-size: 1.4em;
+    font-weight: 700;
+    text-align: center;
+    color: $c-secondary;
+  }
+
+  .articles {
+    tr {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: .3rem 1rem;
+
+      th,
+      td {
+        padding: .5rem .5rem;
+      }
+    }
+
+    tbody {
+      tr {
+        cursor: pointer;
+
+        td:last-child {
+          z-index: 0;
+          margin-left: auto;
+        }
+      }
+
+      tr:nth-child(even) {
+        background: $c-primary-dark;
+
+        .check-icon.active {
+          .line-1,
+          .line-2 {
+            background: $c-primary;
+          }
+        }
+        .check-icon.active.checked {
+          .line-1,
+          .line-2 {
+            background: $c-secondary;
+          }
+        }
+      }
+    }
+
+    &-list-item-id {
+      text-align: right;
+      min-width: 45px;
+      border-right: 2px solid #f2f2f2;
+    }
+
+    .check-icon {
+      transform: rotate(-135deg) scale(.8);
+
+      .line-1,
+      .line-2 {
+        display: block;
+        width: 25px;
+        height: 6px;
+        border-radius: 2px;
+        transition: all .3s;
+      }
+      .line-2 {
+        width: 21px;
+        transform: rotate(90deg) translateY(9px) translateX(2px);
+      }
+    }
+
+    .check-icon.active {
+      & .line-1,
+      & .line-2 {
+        background: $c-primary-dark;
+      }
+    }
+    .check-icon.active.checked {
+      & .line-1,
+      & .line-2 {
+        background: $c-secondary;
+      }
+    }
+  }
+
+}
