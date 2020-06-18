@@ -1,0 +1,55 @@
+@import 'src/assets/styles/variables.scss';
+
+.admin-header {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  &-menu {
+    &-button {
+      width: 100%;
+      font-size: 1.2em;
+      padding: 1rem;
+      background: $c-neutral-light;
+      border: none;
+      border-bottom: 4px solid $c-secondary;
+
+      &:hover,
+      &:active {
+        background: $c-neutral-light;
+      }
+    }
+
+    &-items {
+      position: absolute;
+      right: 0;
+      left: 0;
+      display: block;
+      transform: translateY(-50%) scaleY(0);
+      transition: transform .3s;
+      padding: .5rem 0;
+      color: $c-primary-darkest;
+      background: $c-secondary;
+
+      .item-link {
+        display: block;
+        width: 100%;
+        margin-left: -100%;
+        transition: margin-left .3s;
+        padding: 1rem 3rem;
+      }
+
+      &.active {
+        transform: translateY(0) scaleY(1);
+        transition: transform .3s;
+
+        .item-link {
+          margin-left: 0;
+          transition: margin-left .5s;
+        }
+      }
+    }
+  }
+}

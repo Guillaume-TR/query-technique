@@ -1,0 +1,14 @@
+@import 'src/assets/styles/variables.scss';
+
+.main {
+  display: flex;
+  height: calc(100vh - #{$h-menu-admin});
+  justify-content: center;
+  align-items: center;
+  margin-top: $h-menu-admin;
+
+  .welcome-message {
+    font-size: 2em;
+    text-align: center;
+  }
+}
