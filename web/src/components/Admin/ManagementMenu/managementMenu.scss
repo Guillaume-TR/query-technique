@@ -1,0 +1,92 @@
+@import 'src/assets/styles/variables.scss';
+
+
+.admin-management-menu {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: $c-primary-darkest;
+  background: $c-neutral-light;
+  border-top: 5px solid $c-secondary;
+
+  &-items {
+    display: flex;
+    justify-content: space-evenly;
+
+    &-item {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .item-link {
+        display: block;
+        width: 100%;
+        padding: .7rem 0;
+        text-align: center;
+        transition: all .3s;
+        
+        .icon {
+          fill: $c-primary-darkest;
+          transition: all .3s;
+
+          &--add {
+            transform: rotate(45deg);
+          }
+        }
+
+        span {
+          display: block;
+        }
+
+        &:hover {
+          color: $c-secondary-darker;
+
+          & .icon {
+          fill: $c-secondary-darker;
+        }
+        }
+      }
+    }
+
+    :nth-child(2),
+    :nth-child(3) {
+      .item-link {
+        pointer-events: none;
+        color: $c-primary-opa-50;
+
+        .icon {
+          fill: $c-primary-opa-50;
+        }
+      }
+    }
+
+    &.check-mode {
+      & :nth-child(2),
+      & :nth-child(3) {
+        .item-link {
+          pointer-events: initial;
+          color: $c-primary-darkest;
+
+          .icon {
+            fill: $c-primary-darkest;
+          }
+        }
+      }
+    }
+
+    &.check-mode-multiple {
+      & :nth-child(3) {
+        .item-link {
+          pointer-events: initial;
+          color: $c-primary-darkest;
+
+          .icon {
+            fill: $c-primary-darkest;
+          }
+        }
+      }
+    }
+  }
+}
