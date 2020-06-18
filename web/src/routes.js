@@ -1,7 +1,20 @@
-import Home from './components/Home/Home';
-import ArticleDetails from './components/ArticleDetails/ArticleDetails';
+import User from './components/User';
+import Home from './components/User/Home';
+import ArticleDetails from './components/User/ArticleDetails';
 
 export default [
-  { path: '/', name: 'home', component: Home },
-  { path: '/article/:slug', name: 'articleDetails', component: ArticleDetails }
+  { path: '/', component: User,
+    children: [
+      {
+        path: '/',
+        name: 'user-home',
+        component: Home
+      },
+      {
+        path: '/article/:slug',
+        name: 'user-article-details',
+        component: ArticleDetails
+      }
+    ]
+  },
 ]

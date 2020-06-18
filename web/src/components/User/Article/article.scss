@@ -1,0 +1,53 @@
+
+@import 'src/assets/styles/variables.scss';
+
+.article {
+  margin: 3rem 0 2rem;
+
+  &-title {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: $c-neutral-lightest;
+    padding: 1rem 0;
+    line-height: 2.1rem;
+  }
+
+  &-date {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    
+    &-icon {
+      width: 25px;
+    }
+
+    &-text {
+      margin-left: .5rem;
+      font-size: 1.2em;
+      color: $c-secondary-lighter;
+    }
+  }
+
+  &-short-description {
+    margin: 1rem 0;
+    font-size: 1.2em;
+    color: $c-secondary-lighter;
+    line-height: 1.4rem;
+  }
+
+  &-read-more {
+    display: inline-block;
+    padding: .7rem 1.5rem;
+    margin: 1rem 0 2rem;
+    font-size: 1.2em;
+    color: $c-neutral-lightest;
+    background: $c-secondary-dark;
+    border: none;
+  }
+
+  &-separator {
+    width: 100%;
+    border: 1px solid $c-primary;
+  }
+}
