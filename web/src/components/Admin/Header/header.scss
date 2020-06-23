@@ -1,55 +1,55 @@
 @import 'src/assets/styles/variables.scss';
 
 .admin-header {
-  z-index: 5;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
 
-  &-menu {
-    &-button {
-      width: 100%;
-      font-size: 1.2em;
-      padding: 1rem;
-      background: $c-neutral-light;
-      border: none;
-      border-bottom: 4px solid $c-secondary;
+  &-nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: $w-menu-admin;
+    background: $c-tertiary-dark;
 
-      &:hover,
-      &:active {
-        background: $c-neutral-light;
-      }
+    &-title {
+      font-size: 1.3em;
+      font-weight: 700;
+      padding: 1.3rem $p-lr-menu-admin calc(1.3rem + 5px);
+      color: $c-neutral-light;
+      border-right: 1px solid $c-primary-darkest;
     }
 
-    &-items {
-      position: absolute;
-      right: 0;
-      left: 0;
-      display: block;
-      transform: translateY(-50%) scaleY(0);
-      transition: transform .3s;
-      padding: .5rem 0;
-      color: $c-primary-darkest;
-      background: $c-secondary;
+    &-subtitle {
+      font-size: 1.15em;
+      padding: 1.3rem $p-lr-menu-admin;
+      color: $c-secondary-dark;
+      background: $c-tertiary-darker;
+    }
 
-      .item-link {
-        display: block;
-        width: 100%;
-        margin-left: -100%;
-        transition: margin-left .3s;
-        padding: 1rem 3rem;
-      }
+    .nav {
+      margin-top: 1rem;
 
-      &.active {
-        transform: translateY(0) scaleY(1);
-        transition: transform .3s;
+      &-item {
+        &-link {
+          display: block;
+          padding: 1rem $p-lr-menu-admin;
 
-        .item-link {
-          margin-left: 0;
-          transition: margin-left .5s;
+          &:hover {
+            color: $c-primary-darkest;
+            background: $c-secondary-dark;
+          }
         }
       }
     }
+  }
+
+  &-breadcrumb {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: $w-menu-admin;
+    padding: 1.5rem 2rem;
+    color: $c-primary;
+    background: $c-tertiary-dark;
+    border-bottom: 5px solid $c-secondary-dark;
   }
 }

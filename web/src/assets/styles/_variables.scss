@@ -16,6 +16,9 @@ $c-neutral-dark: #333333;
 $c-neutral-light: #F2F2F2;
 $c-neutral-lightest: #FFFFFF;
 
+$c-tertiary-darker: #353A3F;
+$c-tertiary-dark: #3D4249;
+
 // Colors with opacity
 $c-primary-opa-50: rgba(61, 66, 73, 0.5);
 $c-secondary-opa-50: rgba(183, 219, 133, .5);
@@ -26,3 +29,8 @@ $fs-regular: 16px;
 $h-nav: 70px;
 
 $h-menu-admin: 60px;
+$w-menu-admin: 300px;
+
+// Padding
+
+$p-lr-menu-admin: 2.5rem;

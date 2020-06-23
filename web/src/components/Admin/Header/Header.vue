@@ -1,42 +1,38 @@
 <template>
   <header class="admin-header">
-    <nav class="admin-header-menu">
-      <button class="admin-header-menu-button" @click="toggleMenu">Menu</button>
-      <ul class="admin-header-menu-items" :class="{'active': mainMenu.display}">
-        <li class="admin-header-menu-items-item" @click="toggleMenu">
-          <router-link
-            class="item-link"
-            :to="{ name: 'admin-articles' }"
-          >
-            Articles
-          </router-link>
+    <nav class="admin-header-nav">
+
+      <h1 class="admin-header-nav-title">
+        Query-Technique
+      </h1>
+
+      <h2 class="admin-header-nav-subtitle">
+        Administration
+      </h2>
+
+      <ul class="nav">
+        <li class="nav-item">
+          <router-link class="nav-item-link" :to="{ name:'admin-home' }">Accueil</router-link>
         </li>
-        <li class="admin-header-menu-items-item" @click="toggleMenu">
-          <router-link
-            class="item-link"
-            :to="{ name: 'admin-articles' }"
-          >
-            Flash
-          </router-link>
+        <li class="nav-item">
+          <router-link class="nav-item-link" :to="{ name:'admin-home' }">Articles</router-link>
         </li>
-        <li class="admin-header-menu-items-item" @click="toggleMenu">
-          <router-link
-            class="item-link"
-            :to="{ name: 'admin-articles' }"
-          >
-            Comptes
-          </router-link>
+        <li class="nav-item">
+          <router-link class="nav-item-link" :to="{ name:'admin-home' }">Commentaires</router-link>
         </li>
-        <li class="admin-header-menu-items-item" @click="toggleMenu">
-          <router-link
-            class="item-link"
-            :to="{ name: 'admin-articles' }"
-          >
-            Commentaires
-          </router-link>
+        <li class="nav-item">
+          <router-link class="nav-item-link" :to="{ name:'admin-home' }">Flash</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-item-link" :to="{ name:'admin-home' }">Comptes</router-link>
         </li>
       </ul>
     </nav>
+
+    <div class="admin-header-breadcrumb">
+      Administration
+    </div>
+    
   </header>
 </template>
 
@@ -44,18 +40,6 @@
 
 export default {
   name: 'Header',
-  data() {
-    return {
-      mainMenu: {
-        display: false
-      }
-    }
-  },
-  methods: {
-    toggleMenu() {
-      this.mainMenu.display = !this.mainMenu.display;
-    }
-  },
 }
 </script>
 
