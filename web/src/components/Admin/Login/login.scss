@@ -1,0 +1,48 @@
+@import 'src/assets/styles/variables.scss';
+
+.main {
+
+  .login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 500px;
+    transform: translateY(-50%) translateX(-50%);
+
+    &-title {
+      margin: 2rem 0;
+      padding: 1rem;
+      font-size: 1.5em;
+      text-align: center;
+      line-height: 1.5em;
+    }
+
+    &-label {
+      display: block;
+      align-self: flex-start;
+      margin: .3rem 1.1rem;
+      font-size: .9em;
+      color: $c-secondary-light;
+    }
+
+    &-field {
+      margin: 0 1rem 1rem;
+      padding: .7rem 1rem;
+      background: $c-secondary-lighter;
+      border: none;
+      border-radius: 3px;
+    }
+
+    &-button {
+      margin-top: 1rem;
+      padding: .7rem 1rem;
+      color: $c-primary-darkest;
+      background: $c-secondary-light;
+      border: none;
+      border-radius: 3px;
+    }
+  }
+}

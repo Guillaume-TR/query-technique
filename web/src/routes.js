@@ -4,6 +4,7 @@ import ArticleDetails from './components/User/ArticleDetails';
 
 import Admin from './components/Admin';
 import AdminHome from './components/Admin/Home';
+import AdminLogin from './components/Admin/Login';
 
 export default [
   { path: '/', component: User,
@@ -29,4 +30,5 @@ export default [
       },
     ]
   },
+  { path: '/login', component: AdminLogin },
 ]
