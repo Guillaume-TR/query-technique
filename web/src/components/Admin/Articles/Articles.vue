@@ -1,29 +1,42 @@
 <template>
   <main class="main">
 
-    <h2 class="section-title">Gestion des articles</h2>
-
-    <ManagementMenu :articlesChecked="articlesChecked" />
+    <div class="section">
+      <h2 class="section-title">Gestion des articles</h2>
+      <button type="button" class="section-button">Ajouter un article</button>
+    </div>
 
     <table class="articles">
-      <tbody class="articles-list">
+      <thead>
+        <tr class="articles-head">
+          <th class="articles-head-cel articles-head-cel--id">#</th>
+          <th class="articles-head-cel articles-head-cel--title">Titre</th>
+          <th class="articles-head-cel articles-head-cel--date">Date</th>
+          <th class="articles-head-cel articles-head-cel--action">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
         <tr
-          class="articles-list-item"
+          class="articles-item"
           v-for="(article, index) in articles"
           :key="index"
-          @click="toggleCheckArticle(index)"
         >
-          <td class="articles-list-item-id">{{ article.id }}</td>
-          <td class="articles-list-item-title">{{ article.title }}</td>
-          <td class="articles-list-item-check">
-            <div class="check-icon" :class="{ 'active': checkMode, 'checked': article.checked }">
-              <span class="line-1"></span>
-              <span class="line-2"></span>
-            </div>
+          <td class="articles-item-cel articles-item-cel--id">{{ article.id }}</td>
+          <td class="articles-item-cel articles-item-cel--title">{{ article.title }}</td>
+          <td class="articles-item-cel articles-item-cel--date">{{ article.date }}</td>
+          <td class="articles-item-cel articles-item-cel--action">
+            <a href="#" class="action action--edit">
+              <Icon name="edit" size="30" />
+              <span>Modifier</span>
+            </a>
+            <a href="#" class="action action--delete">
+              <Icon name="delete" size="30" />
+              <span>Supprimer</span>
+            </a>
           </td>
         </tr>
       </tbody>
-      
     </table>
 
   </main>
@@ -31,36 +44,17 @@
 
 <script>
 import axios from 'axios';
-import ManagementMenu from '../ManagementMenu';
+
+import Icon from '../../icons/Icon';
 
 export default {
   name: 'Articles',
   components: {
-    ManagementMenu,
+    Icon,
   },
   data() {
     return {
-      articles: [],
-      articlesChecked: [],
-      checkMode: false,
-    }
-  },
-  methods: {
-    toggleCheckArticle(articleIndex) {
-      this.articles[articleIndex].checked = !this.articles[articleIndex].checked;
-
-      const articleId = this.articles[articleIndex].id;
-      const index = this.articlesChecked.indexOf(articleId);
-
-      if (index === -1) {
-          this.articlesChecked.push(articleId);
-      } else {
-          this.articlesChecked.splice(index, 1);
-      }
-      this.toggleCheckMode();
-    },
-    toggleCheckMode() {
-      this.checkMode = this.articlesChecked.length > 0;
+      articles: []
     }
   },
   mounted() {
@@ -81,4 +75,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./articles.scss" scoped></style>
+<style lang="scss" src="./articles.scss"></style>

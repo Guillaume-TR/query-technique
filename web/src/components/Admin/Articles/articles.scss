@@ -1,92 +1,78 @@
 @import 'src/assets/styles/variables.scss';
 
 .main {
-  margin-top: 70px;
+  margin-top: $h-menu-admin;
+  margin-left: $w-menu-admin;
 
-  .section-title {
-    padding: 1.5rem 1rem 2.5rem;
-    font-size: 1.4em;
-    font-weight: 700;
-    text-align: center;
-    color: $c-secondary;
+  .section {
+    display: flex;
+    align-items: center;
+    padding: 3rem 5rem;
+
+    &-title {
+      margin-right: 3rem;
+      font-size: 1.4em;
+      font-weight: 700;
+      max-width: max-content;
+      color: $c-secondary;
+    }
+
+    &-button {
+      padding: .7rem 1rem;
+      color: $c-primary-darkest;
+      background: $c-secondary-light;
+      border: none;
+      border-radius: 3px;
+    }
   }
 
   .articles {
-    tr {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding: .3rem 1rem;
+    margin: 0 5rem;
 
-      th,
-      td {
-        padding: .5rem .5rem;
+    tr {
+      border-bottom: 2px solid $c-primary-darker;
+
+      th, td {
+        padding: 1rem 2rem;
+      }
+    }
+
+    thead {
+      text-align: left;
+
+      .articles-head {
+        border-color: $c-primary;
       }
     }
 
     tbody {
-      tr {
-        cursor: pointer;
+      .articles-item-cel--action {
+        display: flex;
+        flex-direction: row;
 
-        td:last-child {
-          z-index: 0;
-          margin-left: auto;
-        }
-      }
+        .action {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
 
-      tr:nth-child(even) {
-        background: $c-primary-dark;
+          &:hover {
+            color: $c-secondary;
+          }
 
-        .check-icon.active {
-          .line-1,
-          .line-2 {
-            background: $c-primary;
+          &--edit {
+            color: $c-neutral-light;
+            margin-right: 1rem;
+
+            .icon-edit {
+              transform: rotate(45deg);
+            }
+          }
+
+          span {
+            display: block;
           }
         }
-        .check-icon.active.checked {
-          .line-1,
-          .line-2 {
-            background: $c-secondary;
-          }
-        }
-      }
-    }
-
-    &-list-item-id {
-      text-align: right;
-      min-width: 45px;
-      border-right: 2px solid #f2f2f2;
-    }
-
-    .check-icon {
-      transform: rotate(-135deg) scale(.8);
-
-      .line-1,
-      .line-2 {
-        display: block;
-        width: 25px;
-        height: 6px;
-        border-radius: 2px;
-        transition: all .3s;
-      }
-      .line-2 {
-        width: 21px;
-        transform: rotate(90deg) translateY(9px) translateX(2px);
-      }
-    }
-
-    .check-icon.active {
-      & .line-1,
-      & .line-2 {
-        background: $c-primary-dark;
-      }
-    }
-    .check-icon.active.checked {
-      & .line-1,
-      & .line-2 {
-        background: $c-secondary;
       }
     }
   }
-
 }

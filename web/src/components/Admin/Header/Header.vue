@@ -15,7 +15,7 @@
           <router-link class="nav-item-link" :to="{ name:'admin-home' }">Accueil</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-item-link" :to="{ name:'admin-home' }">Articles</router-link>
+          <router-link class="nav-item-link" :to="{ name:'admin-articles' }">Articles</router-link>
         </li>
         <li class="nav-item">
           <router-link class="nav-item-link" :to="{ name:'admin-home' }">Commentaires</router-link>
