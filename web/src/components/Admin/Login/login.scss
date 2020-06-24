@@ -2,7 +2,7 @@
 
 .main {
 
-  .login-form {
+  .form {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -28,12 +28,24 @@
       color: $c-secondary-light;
     }
 
-    &-field {
+    &-field,
+    &-group-field {
       margin: 0 1rem 1rem;
       padding: .7rem 1rem;
       background: $c-secondary-lighter;
       border: none;
       border-radius: 3px;
+    }
+
+    &-group {
+      position: relative;
+
+      &-display {
+        position: absolute;
+        top: 9px;
+        right: 25px;
+        cursor: pointer;
+      }
     }
 
     &-button {
